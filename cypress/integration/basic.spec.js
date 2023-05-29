@@ -1,8 +1,12 @@
 /// <reference types="cypress" />
 
 describe('Cypress basics', () => {
-    it('Deve visitar uma página e fazer uma assertiva no título', () => {
+    it.only('Deve visitar uma página e fazer uma assertiva no título', () => {
         cy.visit('https://www.wcaquino.me/cypress/componentes.html');
+
+
+
+
         cy.title().should('be.equal', 'Campo de Treinamento')
         cy.title().should('contain', 'Campo')
 
@@ -14,6 +18,11 @@ describe('Cypress basics', () => {
             cy.title()
             .should('be.equal', 'Campo de Treinamento')
             .and('contain', 'Campo')
+
+    //Tanto o "then" quanto o "should" tratam está promise
+    cy.title().then(title => {
+        console.log(title)
+    })
 })
 
     it ('Deve encontrar e interagir com um elemento', () => {
